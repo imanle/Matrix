@@ -8,7 +8,7 @@ __global__ void mm_kernel(float* A, float* B, float* C, unsigned int M, unsigned
     unsigned int col = blockIdx.x*blockDim.x + threadIdx.x;
     float sum = 0.0f;
     for(unsigned int i = 0; i < K; ++i) {
-        sum += A[row*K + i]*B[i*K + col]; 
+        sum += A[row*M + i]*B[i*N + col]; 
         }
     
     C[row*M + col] = sum;   
