@@ -71,7 +71,7 @@ void mm_gpu(float* A, float* B, float* C, unsigned int M, unsigned int N, unsign
     startTime(&timer);
     dim3 numThreadsPerBlock(32, 32);
     dim3 numBlocks((M + numThreadsPerBlock.x - 1)/numThreadsPerBlock.x , (N + numThreadsPerBlock.y - 1)/numThreadsPerBlock.y); 
-    rgb2gray_kernel <<< numBlocks, numThreadsPerBlock >>> (A_d, B_d, C_d, M, N, K);
+    mm_kernel <<< numBlocks, numThreadsPerBlock >>> (A_d, B_d, C_d, M, N, K);
 
 
 
